@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noter</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" type="image/png" href="media/favicon.png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Sansation:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+    </style>
+
+</head>
+<body class="w-full bg-gradient-to-br from-zinc-900 to-white overflow-x-hidden animate-gradient-x" >
+    <style>
+        @keyframes gradient-x {
+            0%, 100% {background-position: 0% 50%;}
+            50% {background-position: 100% 50%;}
+        }
+
+        .animate-gradient-x {
+            background-size: 200% 200%; /* Required to give the background room to move */
+            animation: gradient-x 13s ease infinite;
+        }
+    </style>
+    <div class="flex flex-col items-center">
+        <img src="media/Noter_logo.png" class="h-[20rem]" >
+        <div class="bg-zinc-300 h-[25rem] w-[27rem] rounded-xl mt-[-10rem] lg:mt-[-6rem] shadow-black shadow-xl scale-75 md:scale-90 lg:scale-100">
+            <div class="flex flex-col items-center font-['sansation'] mt-3 w-full px-8">
+                <div class="text-3xl flex justify-center w-full mb-4">
+                    <h1 class=" font-bold text-zinc-800">Login to</h1>
+                    <h1 class=" font-bold pl-2 text-purple-600">Noter</h1>
+                </div>
+                <form class="flex flex-col gap-5 w-full max-w-md mx-auto scale-110 lg:scale-100" autocomplete="on">
+
+                    <!-- Email box -->
+                    <div class="flex flex-col gap-1">
+                        <label for="username" class="text-zinc-700 text-[1.2rem] font-['arimo']">E-mail</label>
+
+                        <input id="username" type="text" name="username" required minlength="4" maxlength="20" placeholder="Enter your username" class="font-['arimo'] rounded-lg px-4 py-2 border border-purple-900/50 focus:outline-none focus:ring-2 transition-all duration-300 focus:ring-purple-400 bg-white text-zinc-900 placeholder-zinc-400" />
+
+                        <span class="text-xs text-zinc-500 ml-2">4-20 characters</span>
+                    </div>
+
+                    <!-- Password box -->
+                    <div class="flex flex-col gap-1 relative">
+                        <label for="password" class="text-zinc-700 font-['arimo']">Password</label>
+
+                        <input id="passwordInput" type="password" name="password" required minlength="8" maxlength="32" placeholder="Enter your password" class="font-['arimo'] rounded-lg px-4 py-2 border border-purple-900/50 focus:outline-none focus:ring-2 transition-all duration-300 focus:ring-purple-400 bg-white text-zinc-900 placeholder-zinc-400 pr-12" />
+
+                        <button type="button" id="togglePassword" class="absolute right-3 top-9 text-zinc-500 hover:text-purple-600 focus:outline-none"></button>
+
+                        <span class="text-xs text-zinc-500 ml-2">8-32 characters</span>
+                    </div>
+
+                    <!-- Login Button -->
+                    <button type="submit" class="w-full bg-gradient-to-r from-purple-600 to-purple-400 hover:from-purple-700 hover:to-purple-500 text-white font-bold py-2 rounded-lg shadow-md transition-colors text-lg">Login</button>
+                    <div class="flex flex-row justify-between items-center mt-1 w-full">
+                        <button type="button" class="text-xs text-purple-600 hover:underline font-semibold">Forgot password?</button>
+                        <button type="button" class="text-xs text-zinc-700 hover:text-purple-600 hover:underline font-semibold">Sign up</button>
+                    </div>
+                </form>
+            </div>
+        </div>    
+    </div>    
+</body>    
