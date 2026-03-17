@@ -39,7 +39,7 @@
                     <div class="flex flex-col gap-1">
                         <label for="username" class="text-zinc-700 text-[1.2rem] font-bold font-['arimo']">E-mail</label>
 
-                        <input id="username" type="text" name="username" required minlength="4" maxlength="50" placeholder="Enter your username" class="font-['arimo'] rounded-lg px-4 py-2 border border-blue-900/50 focus:outline-none focus:ring-2 transition-all duration-300 focus:ring-blue-400 bg-white text-zinc-900 placeholder-zinc-400" />
+                        <input id="Email" type="text" name="username" required minlength="4" maxlength="50" placeholder="Enter your username" class="font-['arimo'] rounded-lg px-4 py-2 border border-blue-900/50 focus:outline-none focus:ring-2 transition-all duration-300 focus:ring-blue-400 bg-white text-zinc-900 placeholder-zinc-400" />
 
                         <!-- <span class="text-xs text-zinc-500 ml-2">4-20 characters</span> -->
                     </div>
@@ -48,7 +48,7 @@
                     <div class="flex flex-col gap-1 relative">
                         <label for="password" class="text-zinc-700 font-bold font-['arimo']">Password</label>
 
-                        <input id="passwordInput" type="password" name="password" required minlength="8" maxlength="32" placeholder="Enter your password" class="font-['arimo'] rounded-lg px-4 py-2 border border-blue-900/50 focus:outline-none focus:ring-2 transition-all duration-300 focus:ring-blue-400 bg-white text-zinc-900 placeholder-zinc-400 pr-12" />
+                        <input id="password" type="password" name="password" required minlength="8" maxlength="32" placeholder="Enter your password" class="font-['arimo'] rounded-lg px-4 py-2 border border-blue-900/50 focus:outline-none focus:ring-2 transition-all duration-300 focus:ring-blue-400 bg-white text-zinc-900 placeholder-zinc-400 pr-12" />
 
                         <button type="button" id="togglePassword" class="absolute right-3 top-9 text-zinc-500 hover:text-blue-600 focus:outline-none"></button>
 
@@ -56,8 +56,7 @@
                     </div>
 
                     <!-- Login Button -->
-                    <button type="submit" class="w-full bg-gradient-to-r from-blue-600 to-blue-400 hover:from-blue-700 hover:to-blue-500 hover:-translate-y-1 text-white font-bold py-2 rounded-lg shadow-xl shadow-black/30 transition-all duration-300 text-lg">Login</button>
-
+                    <button id="loginBtn" type="submit" class="w-full bg-gradient-to-r from-blue-600 to-blue-400 hover:from-blue-700 hover:to-blue-500 hover:-translate-y-1 text-white font-bold py-2 rounded-lg shadow-xl shadow-black/30 transition-all duration-300 text-lg">Login</button>
                     <div class="flex flex-row justify-between items-center mt-1 w-full">
                         <button type="button" class=" text-blue-600 hover:underline font-semibold">Forgot password?</button>
                         <a type="button" href="signup.html" class=" text-zinc-700 hover:text-blue-600 hover:underline font-semibold">Sign up</a>
@@ -65,5 +64,8 @@
                 </form>
             </div>
         </div>    
+        <p id="errorMsg" class="hidden text-[1.2rem] text-white z-50 mt-5 px-4 py-1 bg-red-800/50 border border-white rounded-full font-thin"></p>
     </div>    
+
+    <script type="module" src="js/login.js"></script>
 </body>    

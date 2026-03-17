@@ -25,7 +25,7 @@
             animation: gradient-x 8s ease infinite;
         }
     </style>
-    <div class="flex flex-col items-center mt-[-4rem] lg:mt-[-1rem]">
+    <div class="flex flex-col items-center mt-[-4rem] lg:mt-[-4rem]">
         <img src="media/Noter_logo.png" class="h-[20rem]" >
         <div class="bg-white/60 backdrop-blur-2xl h-auto py-8 w-[90%] lg:w-[26rem] rounded-xl mt-[-7rem] lg:mt-[-6rem] shadow-black/50 shadow-xl scale-90 md:scale-95 lg:scale-100">
 
@@ -41,15 +41,16 @@
                     <!-- Email box -->
                     <div class="flex flex-col gap-1">
                         <label for="username" class="text-zinc-700 text-sm font-bold font-['arimo']">E-mail</label>
-                        <input id="username" type="email" name="username" required placeholder="Enter your email" 
+                        <input id="email" type="email" name="username" required placeholder="Enter your email" 
                             class="font-['arimo'] rounded-lg px-4 py-2 border border-blue-900/50 focus:outline-none focus:ring-2 transition-all duration-300 focus:ring-blue-400 bg-white text-zinc-900 placeholder-zinc-400" />
                     </div>
 
                     <!-- Password box -->
                     <div class="flex flex-col gap-1 relative">
                         <label for="passwordInput" class="text-zinc-700 text-sm font-bold font-['arimo']">Password</label>
-                        <input id="passwordInput" type="password" name="password" required minlength="8" placeholder="Create a password" 
+                        <input id="password" type="password" name="password" required minlength="8" maxlength="20" placeholder="Create a password" 
                             class="font-['arimo'] rounded-lg px-4 py-2 border border-blue-900/50 focus:outline-none focus:ring-2 transition-all duration-300 focus:ring-blue-400 bg-white text-zinc-900 placeholder-zinc-400" />
+                            <lable class="text-[.7rem] font-semibold text-black/50 ml-2">8-20 characters</lable>
                     </div>
 
                     <!-- Confirm Password box -->
@@ -60,7 +61,7 @@
                     </div>
 
                     <!--Create Account Button -->
-                    <button type="submit" class="w-full mt-2 bg-gradient-to-r from-blue-600 to-blue-400 hover:from-blue-700 hover:to-blue-500 hover:-translate-y-1 text-white font-bold py-2 rounded-lg shadow-xl shadow-black/30 transition-all duration-300 text-lg">
+                    <button id="signupBtn" type="submit" class="w-full mt-2 bg-gradient-to-r from-blue-600 to-blue-400 hover:from-blue-700 hover:to-blue-500 hover:-translate-y-1 text-white font-bold py-2 rounded-lg shadow-xl shadow-black/30 transition-all duration-300 text-lg">
                         Create Account
                     </button>
 
@@ -72,5 +73,9 @@
                 </form>
             </div>
         </div>
+        <p id="errorMsg" class="hidden text-[1.2rem] text-white z-50 mt-5 px-4 py-1 bg-red-800/50 border border-white rounded-full font-thin"></p>
     </div>    
+
+
+    <script type="module" src="js/signup.js"></script>
 </body>    
