@@ -8,6 +8,8 @@ loginBtn.addEventListener("click", async()=>{  //async is usued to enable the us
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
 
+    errorMsg.innerText = "";
+
     try {
         await signInWithEmailAndPassword(auth,email,password); 
         //await is used to pause the program until a conslusion is provided

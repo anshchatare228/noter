@@ -4,7 +4,9 @@ import{signInWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/10.1
 const signupBtn = document.getElementById('signupBtn');
 const errorMsg = document.getElementById('errorMsg');
 
-signupBtn.addEventListener("click",async()=>{
+signupBtn.addEventListener("click",async(e)=>{
+
+    e.preventDefault();
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
     const confirmPassword = document.getElementById('confirmPassword').value;
