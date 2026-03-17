@@ -11,6 +11,9 @@ signupBtn.addEventListener("click",async(e)=>{
     const password = document.getElementById('password').value;
     const confirmPassword = document.getElementById('confirmPassword').value;
 
+    errorMsg.innerText = "";
+    errorMsg.classList.add("hidden");
+
     if(password !== confirmPassword){
         errorMsg.removeAttribute("hidden");
         errorMsg.innerText = "passwords do not match";
@@ -27,14 +30,17 @@ signupBtn.addEventListener("click",async(e)=>{
         catch(error){
             if(error.code === "auth/email-already-in-use"){
                 errorMsg.innerText = "email is already in use";
+                errorMsg.classList.remove("hidden");
             }
             
             else if (error.code === "auth/invalid-email") {
                 errorMsg.innerText = "Invalid email format";
+                errorMsg.classList.remove("hidden");
             } 
             
             else {
                 errorMsg.innerText = "Something went wrong";
+                errorMsg.classList.remove("hidden");
             }
         }
     }

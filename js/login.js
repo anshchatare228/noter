@@ -11,6 +11,7 @@ loginBtn.addEventListener("click", async(e)=>{  //async is usued to enable the u
     const password = document.getElementById('password').value;
 
     errorMsg.innerText = "";
+    errorMsg.classList.add("hidden");
 
     try {
         await signInWithEmailAndPassword(auth,email,password); 
@@ -21,11 +22,13 @@ loginBtn.addEventListener("click", async(e)=>{  //async is usued to enable the u
     catch(error){
         if(error === "auth/network-request-failed"){
             errorMsg.innerHTML = "Something went wrong";
+            errorMsg.classList.remove("hidden");
             console.log(error.code);
         }
         
         else{
             errorMsg.innerHTML = "Invalid Email or password";
+            errorMsg.classList.remove("hidden");
             console.log(error.code);
         }
     } //if a error is caught, it'll display a messgae wiht a string
