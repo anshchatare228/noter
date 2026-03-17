@@ -12,11 +12,11 @@ signupBtn.addEventListener("click",async(e)=>{
     const confirmPassword = document.getElementById('confirmPassword').value;
 
     errorMsg.innerText = "";
-    errorMsg.classList.add("hidden");
+    errorMsg.classList.add("opacity-0", "translate-y-2");
 
     if(password !== confirmPassword){
-        errorMsg.removeAttribute("hidden");
         errorMsg.innerText = "passwords do not match";
+        errorMsg.classList.remove("opacity-0", "translate-y-2");
         return;
     }
 
@@ -30,17 +30,17 @@ signupBtn.addEventListener("click",async(e)=>{
         catch(error){
             if(error.code === "auth/email-already-in-use"){
                 errorMsg.innerText = "email is already in use";
-                errorMsg.classList.remove("hidden");
+                errorMsg.classList.remove("opacity-0", "translate-y-2");
             }
             
             else if (error.code === "auth/invalid-email") {
                 errorMsg.innerText = "Invalid email format";
-                errorMsg.classList.remove("hidden");
+                errorMsg.classList.remove("opacity-0", "translate-y-2");
             } 
             
             else {
                 errorMsg.innerText = "Something went wrong";
-                errorMsg.classList.remove("hidden");
+                errorMsg.classList.remove("opacity-0", "translate-y-2");
             }
         }
     }
