@@ -1,5 +1,5 @@
-import {auth} from "./firebase";
-import{signInWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";;
+import {auth} from "./firebase.js";
+import {createUserWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
 const signupBtn = document.getElementById('signupBtn');
 const errorMsg = document.getElementById('errorMsg');
@@ -12,13 +12,14 @@ signupBtn.addEventListener("click",async(e)=>{
     const confirmPassword = document.getElementById('confirmPassword').value;
 
     if(password !== confirmPassword){
-        errorMsg.removeAttribute = "hidden";
+        errorMsg.removeAttribute("hidden");
         errorMsg.innerText = "passwords do not match";
+        return;
     }
 
     else{
         try{
-            const userCredeential = await createUserWithEmailAnshPassword(auth,email,password);
+            const userCredeential = await createUserWithEmailAndPassword(auth,email,password);
             console.log("User created");
             window.location.href = "dashboard.html";
         }
