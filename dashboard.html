@@ -18,7 +18,7 @@
 <body class="bg-gradient-to-b from-blue-950 to-blue-900 min-h-screen">
 
     <!-- NAVBAR -->
-    <nav class="bg-white shadow-md px-8 py-4 flex justify-between items-center">
+    <nav class="bg-white/30 backdrop-blur-xl shadow-md px-8 py-4 flex justify-between items-center">
 
         <div class="flex items-center gap-3">
             <img src="media/favicon.png" alt="" class="h-[3rem]">
@@ -216,10 +216,7 @@
 
                     <p class="text-sm text-white/70 mb-4">Paste a note or ask a question and the AI will summarize or explain it.</p>
 
-                    <textarea
-                    rows="3"
-                    placeholder="Paste your note here..."
-                    class="w-full p-3 rounded-lg bg-white/10 border border-white/20 focus:outline-none focus:ring-2 focus:ring-blue-400 resize-none"
+                    <textarea id="aiInput" rows="3" placeholder="Paste your note here..." class="w-full p-3 rounded-lg bg-white/10 border border-white/20 focus:outline-none focus:ring-2 focus:ring-blue-400 resize-none overflow-y-auto"
                     ></textarea>
 
                     <button

@@ -13,8 +13,10 @@
     </style>
 
 </head>
-<body class="w-full bg-gradient-to-br from-blue-950 to-blue-500 overflow-x-hidden animate-gradient-x" >
-    <style>
+<body class="w-full bg-white overflow-x-hidden animate-gradient-x" >
+
+    <video id="bgVid" autoplay muted loop class="fixed mt-[4rem] -z-10 h-full w-full object-cover invert brightness-75" src="media/307818_medium.mp4" type="video/mp4"></video>
+    <!-- <style>
         @keyframes gradient-x {
             0%, 100% {background-position: 0% 50%;}
             50% {background-position: 100% 50%;}
@@ -24,15 +26,15 @@
             background-size: 200% 200%; /* Required to give the background room to move */
             animation: gradient-x 8s ease infinite;
         }
-    </style>
+    </style> -->
     <div class="flex flex-col items-center mt-[-4rem] lg:mt-[-4rem]">
         <img src="media/Noter_logo.png" class="h-[20rem]" >
-        <div class="bg-white/60 backdrop-blur-2xl h-auto py-8 w-[90%] lg:w-[26rem] rounded-xl mt-[-7rem] lg:mt-[-6rem] shadow-black/50 shadow-xl scale-90 md:scale-95 lg:scale-100">
+        <div class="bg-black/85 backdrop-blur-2xl h-auto py-8 w-[90%] lg:w-[26rem] rounded-xl mt-[-7rem] lg:mt-[-6rem] shadow-black/50 shadow-xl scale-90 md:scale-95 lg:scale-100">
 
             <div class="flex flex-col items-center font-['sansation'] px-8">
                 <!-- Header -->
                 <div class="text-3xl flex justify-center w-full mb-6">
-                    <h1 class="font-bold text-zinc-800">Sign-up To</h1>
+                    <h1 class="font-bold text-white">Sign-up To</h1>
                     <h1 class="font-bold pl-2 text-blue-600">Noter</h1>
                 </div>
 
@@ -40,22 +42,22 @@
 
                     <!-- Email box -->
                     <div class="flex flex-col gap-1">
-                        <label for="username" class="text-zinc-700 text-sm font-bold font-['arimo']">E-mail</label>
+                        <label for="username" class="text-white text-sm font-bold font-['arimo']">E-mail</label>
                         <input id="email" type="email" name="username" required placeholder="Enter your email" 
                             class="font-['arimo'] rounded-lg px-4 py-2 border border-blue-900/50 focus:outline-none focus:ring-2 transition-all duration-300 focus:ring-blue-400 bg-white text-zinc-900 placeholder-zinc-400" />
                     </div>
 
                     <!-- Password box -->
                     <div class="flex flex-col gap-1 relative">
-                        <label for="passwordInput" class="text-zinc-700 text-sm font-bold font-['arimo']">Password</label>
+                        <label for="passwordInput" class="text-white text-sm font-bold font-['arimo']">Password</label>
                         <input id="password" type="password" name="password" required minlength="8" maxlength="20" placeholder="Create a password" 
                             class="font-['arimo'] rounded-lg px-4 py-2 border border-blue-900/50 focus:outline-none focus:ring-2 transition-all duration-300 focus:ring-blue-400 bg-white text-zinc-900 placeholder-zinc-400" />
-                            <lable class="text-[.7rem] font-semibold text-black/50 ml-2">8-20 characters</lable>
+                            <lable class="text-[.7rem] font-semibold text-white/70 ml-2">8-20 characters</lable>
                     </div>
 
                     <!-- Confirm Password box -->
                     <div class="flex flex-col gap-1">
-                        <label for="confirmPassword" class="text-zinc-700 text-sm font-bold font-['arimo']">Confirm Password</label>
+                        <label for="confirmPassword" class="text-white text-sm font-bold font-['arimo']">Confirm Password</label>
                         <input id="confirmPassword" type="password" name="confirmPassword" required placeholder="Repeat your password" 
                             class="font-['arimo'] rounded-lg px-4 py-2 border border-blue-900/50 focus:outline-none focus:ring-2 transition-all duration-300 focus:ring-blue-400 bg-white text-zinc-900 placeholder-zinc-400" />
                     </div>
@@ -67,8 +69,8 @@
 
                     <!-- Bottom Link -->
                     <div class="flex flex-row justify-center items-center mt-4 w-full gap-2">
-                        <p class="text-zinc-600">Already have an account?</p>
-                        <a href="index.html" class="text-blue-600 hover:underline font-bold">Login</a>
+                        <p class="text-white">Already have an account?</p>
+                        <a href="index.html" class="text-blue-600 hover:underline font-bold hover:text-yellow-400 duration-300">Login</a>
                     </div>
                 </form>
             </div>

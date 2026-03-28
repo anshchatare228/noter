@@ -11,33 +11,25 @@
         @import url('https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Sansation:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
     </style>
-
 </head>
-<body class="w-full bg-gradient-to-br from-blue-950 to-blue-500 overflow-x-hidden animate-gradient-x" >
-    <style>
-        @keyframes gradient-x {
-            0%, 100% {background-position: 0% 50%;}
-            50% {background-position: 100% 50%;}
-        }
 
-        .animate-gradient-x {
-            background-size: 200% 200%; /* Required to give the background room to move */
-            animation: gradient-x 8s ease infinite;
-        }
-    </style>
+<body class="w-full bg-white overflow-x-hidden animate-gradient-x" >
+
+    <video id="bgVid" autoplay muted loop class="fixed mt-[-2rem] -z-10 h-full w-full object-cover invert brightness-75" src="media/307818_medium.mp4" type="video/mp4"></video>
+
     <div class="flex flex-col items-center mt-[-3rem] lg:mt-[2rem]">
         <img src="media/Noter_logo.png" class="h-[20rem]" >
-        <div class="bg-white/60 backdrop-blur-2xl h-[25rem] w-[90%] lg:w-[26rem] rounded-xl mt-[-8rem] lg:mt-[-6rem] shadow-black/50 shadow-xl scale-90 md:scale-90 lg:scale-100">
+        <div class="bg-zinc-600/80 backdrop-blur-[0.4rem] h-[25rem] w-[90%] lg:w-[26rem] rounded-xl mt-[-8rem] lg:mt-[-6rem] shadow-black/50 shadow-xl scale-90 md:scale-90 lg:scale-100">
             <div class="flex flex-col items-center font-['sansation'] mt-3 px-8">
                 <div class="text-3xl flex justify-center w-full mb-4">
-                    <h1 class=" font-bold text-zinc-800">Login to</h1>
+                    <h1 class=" font-bold text-white">Login to</h1>
                     <h1 class=" font-bold pl-2 text-blue-600">Noter</h1>
                 </div>
                 <form class="flex flex-col gap-5 w-full max-w-md mx-auto scale-110 lg:scale-105" autocomplete="on">
 
                     <!-- Email box -->
                     <div class="flex flex-col gap-1">
-                        <label for="username" class="text-zinc-700 text-[1.2rem] font-bold font-['arimo']">E-mail</label>
+                        <label for="username" class="text-white text-[1.2rem] font-bold font-['arimo']">E-mail</label>
 
                         <input id="email" type="text" name="username" required minlength="4" maxlength="50" placeholder="Enter your username" class="font-['arimo'] rounded-lg px-4 py-2 border border-blue-900/50 focus:outline-none focus:ring-2 transition-all duration-300 focus:ring-blue-400 bg-white text-zinc-900 placeholder-zinc-400" />
 
@@ -46,20 +38,20 @@
 
                     <!-- Password box -->
                     <div class="flex flex-col gap-1 relative">
-                        <label for="password" class="text-zinc-700 font-bold font-['arimo']">Password</label>
+                        <label for="password" class="text-white font-bold font-['arimo']">Password</label>
 
                         <input id="password" type="password" name="password" required minlength="8" maxlength="32" placeholder="Enter your password" class="font-['arimo'] rounded-lg px-4 py-2 border border-blue-900/50 focus:outline-none focus:ring-2 transition-all duration-300 focus:ring-blue-400 bg-white text-zinc-900 placeholder-zinc-400 pr-12" />
 
                         <button type="button" id="togglePassword" class="absolute right-3 top-9 text-zinc-500 hover:text-blue-600 focus:outline-none"></button>
 
-                        <span class="text-xs text-zinc-500 ml-2">8-32 characters</span>
+                        <span class="text-xs text-white ml-2">8-32 characters</span>
                     </div>
 
                     <!-- Login Button -->
                     <button id="loginBtn" type="submit" class="w-full bg-gradient-to-r from-blue-600 to-blue-400 hover:from-blue-700 hover:to-blue-500 hover:-translate-y-1 text-white font-bold py-2 rounded-lg shadow-xl shadow-black/30 transition-all duration-300 text-lg">Login</button>
                     <div class="flex flex-row justify-between items-center mt-1 w-full">
-                        <button type="button" class=" text-blue-600 hover:underline font-semibold">Forgot password?</button>
-                        <a type="button" href="signup.html" class=" text-zinc-700 hover:text-blue-600 hover:underline font-semibold">Sign up</a>
+                        <button type="button" class=" text-blue-600 hover:underline font-semibold duration-300 hover:text-yellow-300">Forgot password?</button>
+                        <a type="button" href="signup.html" class=" text-blue-600 duration-300 hover:text-yellow-300 hover:underline font-semibold">Sign up</a>
                     </div>
                 </form>
             </div>

@@ -4,6 +4,9 @@ import {createUserWithEmailAndPassword} from "https://www.gstatic.com/firebasejs
 const signupBtn = document.getElementById('signupBtn');
 const errorMsg = document.getElementById('errorMsg');
 
+const bgVid = document.getElementById('bgVid');
+bgVid.playbackRate = 0.5;
+
 signupBtn.addEventListener("click",async(e)=>{
 
     e.preventDefault();
@@ -17,6 +20,10 @@ signupBtn.addEventListener("click",async(e)=>{
     if(password !== confirmPassword){
         errorMsg.innerText = "passwords do not match";
         errorMsg.classList.remove("opacity-0", "translate-y-2");
+        setTimeout(() => {
+            errorMsg.classList.add("opacity-0", "translate-y-2"); 
+        }, 2500);
+        
         return;
     }
 
@@ -31,16 +38,25 @@ signupBtn.addEventListener("click",async(e)=>{
             if(error.code === "auth/email-already-in-use"){
                 errorMsg.innerText = "email is already in use";
                 errorMsg.classList.remove("opacity-0", "translate-y-2");
+                setTimeout(() => {
+                    errorMsg.classList.add("opacity-0", "translate-y-2"); 
+                }, 2500);
             }
             
             else if (error.code === "auth/invalid-email") {
                 errorMsg.innerText = "Invalid email format";
                 errorMsg.classList.remove("opacity-0", "translate-y-2");
+                setTimeout(() => {
+                    errorMsg.classList.add("opacity-0", "translate-y-2"); 
+                }, 2500);
             } 
             
             else {
                 errorMsg.innerText = "Something went wrong";
                 errorMsg.classList.remove("opacity-0", "translate-y-2");
+                setTimeout(() => {
+                    errorMsg.classList.add("opacity-0", "translate-y-2"); 
+                }, 2500);
             }
         }
     }

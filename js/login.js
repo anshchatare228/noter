@@ -3,6 +3,8 @@ import {signInWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/10.
 
 const loginBtn = document.getElementById('loginBtn');
 const errorMsg = document.getElementById('errorMsg');
+const bgVid = document.getElementById('bgVid');
+bgVid.playbackRate = 0.5;
 
 loginBtn.addEventListener("click", async(e)=>{  //async is usued to enable the use of await key
     e.preventDefault();
@@ -30,6 +32,9 @@ loginBtn.addEventListener("click", async(e)=>{  //async is usued to enable the u
             errorMsg.innerHTML = "Invalid Email or password";
             errorMsg.classList.remove("opacity-0", "translate-y-2");
             console.log(error.code);
+            setTimeout(() => {
+            errorMsg.classList.add("opacity-0", "translate-y-2"); 
+            }, 2500);
         }
     } //if a error is caught, it'll display a messgae wiht a string
 
