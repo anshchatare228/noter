@@ -15,31 +15,45 @@
 
 </head>
 
-<body class="bg-gradient-to-b from-blue-950 to-blue-900 min-h-screen">
+<body class="bg-black/95 min-h-screen">
 
     <!-- NAVBAR -->
-    <nav class="bg-white/30 backdrop-blur-xl shadow-md px-8 py-4 flex justify-between items-center">
+    <nav class="bg-white/30 backdrop-blur-xl shadow-md px-4 md:px-8 py-3 md:py-4 flex justify-between items-center gap-3">
 
-        <div class="flex items-center gap-3">
-            <img src="media/favicon.png" alt="" class="h-[3rem]">
-            <h1 class="text-[2.8rem] font-['sansation'] ml-[-1rem]">Noter</h1>
+        <div class="flex items-center gap-2 md:gap-3 scale-125 ml-[0.5rem]">
+            <!-- Mobile hamburger -->
+            <button id="sidebarToggle" class="lg:hidden text-white text-2xl cursor-pointer p-1">☰</button>
+            <img src="media/favicon.png" alt="" class="h-8 md:h-[3rem]">
+            <div class="flex flex-col items-center ml-[-0.3rem] mb-1 lg:mb-2">
+                <p class="font-['sansation'] text-[1.8rem] lg:text-[2.2rem]">Noter</p>
+                <p class="text-[0.6rem] lg:text-[0.75rem] text-white mt-[-0.8rem] mr-[0.1rem]">Note everything</p>
+            </div>
         </div>
 
-        <div class="flex items-center gap-6">
-            <input type="text" placeholder="Search notes..."
-                class="px-4 py-2 rounded-lg border focus:outline-none focus:ring-2 focus:ring-blue-400" />
+        <div class="flex items-center gap-3 md:gap-6 flex-1 justify-end">
+            <input id="searchInput" type="text" placeholder="Search notes..."
+                class="hidden sm:block w-full max-w-xs px-3 md:px-4 py-2 rounded-lg border focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm" />
 
-            <button id="logoutBtn" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 cursor-pointer">
+            <button id="logoutBtn" class="bg-blue-600 text-white px-3 md:px-4 py-2 rounded-lg hover:bg-blue-700 cursor-pointer text-sm md:text-base whitespace-nowrap">
                 Logout
             </button>
         </div>
 
     </nav>
 
-    <div class="flex">
+    <!-- Mobile search bar -->
+    <div class="sm:hidden px-4 py-2 bg-white/10">
+        <input id="searchInputMobile" type="text" placeholder="Search notes..."
+            class="w-full px-3 py-2 rounded-lg border focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm" />
+    </div>
+
+    <div class="flex relative">
+
+        <!-- Sidebar overlay (mobile) -->
+        <div id="sidebarOverlay" class="fixed inset-0 bg-black/40 z-30 hidden lg:hidden"></div>
 
         <!-- SIDEBAR -->
-        <aside class="w-64 bg-gradient-to-b from-black/70 to-blue-950 shadow-md min-h-screen p-6">
+        <aside id="sidebar" class="absolute rounded-xl lg:static z-40 w-64 bg-gradient-to-b from-black/70 to-blue-950 shadow-md min-h-screen p-6 backdrop-blur-lg transition-transform duration-300 -translate-x-full lg:translate-x-0">
 
             <button id="newNoteBtn"
                 class="w-full bg-blue-600 text-white text-[1.4rem] duration-300 py-3 rounded-lg mb-6 hover:bg-blue-700 cursor-pointer">
@@ -48,16 +62,16 @@
 
             <ul class="space-y-4 text-white font-['arimo']">
 
-                <li class="flex items-center h-10 hover:text-black cursor-pointer pl-3 bg-white/25 hover:bg-white duration-300 rounded-lg">
+                <li id="sidebarAll" class="flex items-center h-10 hover:text-black cursor-pointer pl-3 bg-white text-black duration-300 rounded-lg">
                     All Notes
                 </li>
 
-                <li
+                <li id="sidebarImportant"
                     class="flex items-center h-10 hover:text-black cursor-pointer pl-3 bg-white/25 hover:bg-white duration-300 rounded-lg">
                     Important
                 </li>
 
-                <li
+                <li id="sidebarTrash"
                     class="flex items-center h-10 hover:text-black cursor-pointer pl-3 bg-white/25 hover:bg-white duration-300 rounded-lg">
                     Trash
                 </li>
@@ -67,33 +81,44 @@
             <div class="mt-6 ml-1">
                 <h3 class="text-[1.3rem] text-white/80 font-['sansation'] pb-3">Tags</h3>
                 <ul class="font-['arimo'] flex flex-col gap-4 text-white">
-                    <li class="flex items-center h-10 hover:text-black cursor-pointer pl-3 bg-white/25 hover:bg-violet-300 duration-300 rounded-lg"><div class="h-3 w-3 rounded-full bg-violet-300 mr-2"></div>Personal</li>
-                    <li class="flex items-center h-10 hover:text-black cursor-pointer pl-3 bg-white/25 hover:bg-yellow-200 duration-300 rounded-lg"><div class="h-3 w-3 rounded-full bg-yellow-200 mr-2"></div>Important</li>
+                    <li id="tagPersonal" class="flex items-center h-10 hover:text-black cursor-pointer pl-3 bg-white/25 hover:bg-violet-300 duration-300 rounded-lg"><div class="h-3 w-3 rounded-full bg-violet-300 mr-2"></div>Personal</li>
+                    <li id="tagImportant" class="flex items-center h-10 hover:text-black cursor-pointer pl-3 bg-white/25 hover:bg-yellow-200 duration-300 rounded-lg"><div class="h-3 w-3 rounded-full bg-yellow-200 mr-2"></div>Important</li>
+                    <li id="tagWork" class="flex items-center h-10 hover:text-black cursor-pointer pl-3 bg-white/25 hover:bg-blue-200 duration-300 rounded-lg"><div class="h-3 w-3 rounded-full bg-blue-200 mr-2"></div>Work</li>
                 </ul>
+            </div>
+
+            <!-- AI BOX (inside sidebar, mobile only) -->
+            <div class="mt-6 lg:hidden">
+                <div class="bg-white/10 backdrop-blur-md text-white p-4 rounded-xl shadow-lg">
+                    <h3 class="text-lg font-semibold mb-3 flex items-center gap-2">✨ Ask AI</h3>
+                    <p class="text-sm text-white/70 mb-3">Paste a note or ask a question and the AI will summarize or explain it.</p>
+                    <textarea id="aiInputMobile" rows="3" placeholder="Paste your note here..." class="w-full p-3 rounded-lg bg-white/10 border border-white/20 focus:outline-none focus:ring-2 focus:ring-blue-400 resize-none overflow-y-auto text-sm"></textarea>
+                    <button class="mt-3 w-full bg-blue-600 hover:bg-blue-700 transition py-2 rounded-lg font-medium text-sm">Generate Summary</button>
+                </div>
             </div>
 
         </aside>
 
         <!-- NOTES GRID -->
-        <main class="flex gap-8 p-8 w-full">
+        <main class="flex flex-col lg:flex-row gap-4 md:gap-8 p-4 md:p-8 w-full min-w-0">
 
             <!-- MAIN SECTION -->
-            <div class="w-[70%]">
+            <div class="w-full lg:w-[70%] min-w-0">
 
-                <h2 class="text-2xl font-semibold text-white mb-4">Your Notes</h2>
+                <h2 id="notesHeading" class="text-2xl font-semibold text-white mb-4">Your Notes</h2>
 
                 <!-- FILTER BAR -->
-                <div class="flex items-center justify-between mb-6">
+                <div class="flex h-[5rem] items-center justify-between mb-6 overflow-x-auto">
 
-                    <div class="flex gap-3">
+                    <div class="flex gap-2 md:gap-3 flex-nowrap">
 
-                        <button class="bg-blue-600 duration-300 text-white px-4 py-1 rounded-lg">All Notes</button>
+                        <button id="filterAll" class="bg-blue-600 duration-300 text-white px-4 py-1 rounded-lg cursor-pointer">All Notes</button>
 
-                        <button class="bg-white/20 duration-300 text-white px-4 py-1 rounded-lg hover:bg-white/90 hover:text-black">Important</button>
+                        <button id="filterImportant" class="bg-white/20 duration-300 text-white px-4 py-1 rounded-lg hover:bg-white/90 hover:text-black cursor-pointer">Important</button>
 
-                        <button class="bg-white/20 duration-300 text-white px-4 py-1 rounded-lg hover:bg-white/90 hover:text-black">Newest</button>
+                        <button id="filterNewest" class="bg-blue-600 duration-300 text-white px-4 py-1 rounded-lg cursor-pointer">Newest</button>
 
-                        <button class="bg-white/20 duration-300 text-white px-4 py-1 rounded-lg hover:bg-white/90 hover:text-black">Oldest</button>
+                        <button id="filterOldest" class="bg-white/20 duration-300 text-white px-4 py-1 rounded-lg hover:bg-white/90 hover:text-black cursor-pointer">Oldest</button>
 
                     </div>
 
@@ -101,7 +126,7 @@
 
 
                 <!-- NOTES GRID (dynamically filled by dashboard.js) -->
-                <div id="notesGrid" class="grid grid-cols-2 xl:grid-cols-2 gap-6">
+                <div id="notesGrid" class="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
                     <p class="text-white/60 col-span-2 text-center py-10">Loading notes...</p>
                 </div>
 
@@ -109,10 +134,10 @@
 
 
             <!-- RIGHT PANEL -->
-            <div class="w-[30%] flex flex-col gap-6">
+            <div class="w-full lg:w-[30%] flex flex-col gap-4 md:gap-6">
 
-                <!--AI BOX-->
-                <div class="bg-white/10 backdrop-blur-md text-white p-6 rounded-xl shadow-lg">
+                <!--AI BOX (desktop only) -->
+                <div class="hidden lg:block bg-white/10 backdrop-blur-md text-white p-6 rounded-xl shadow-lg">
 
                     <h3 class="text-lg font-semibold mb-4 flex items-center gap-2">✨ Ask AI</h3>
 
@@ -139,17 +164,17 @@
 
                     <div class="flex justify-between mb-2">
                         <span>Important</span>
-                        <span>3</span>
+                        <span id="statImportant">0</span>
                     </div>
 
                     <div class="flex justify-between mb-2">
                         <span>Trash</span>
-                        <span>1</span>
+                        <span id="statTrash">0</span>
                     </div>
 
                     <div class="flex justify-between">
                         <span>Total Notes</span>
-                        <span>7</span>
+                        <span id="statTotal">0</span>
                     </div>
 
                 </div>
@@ -162,10 +187,10 @@
     </div>
 
     <!-- NEW NOTE MODAL (hidden by default) -->
-    <div id="noteModal" class="hidden fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50">
-        <div class="bg-white rounded-xl p-6 w-[90%] max-w-md shadow-2xl">
+    <div id="noteModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 opacity-0 pointer-events-none transition-opacity duration-300">
+        <div id="noteModalBox" class="bg-white rounded-xl p-6 w-[90%] max-w-md shadow-2xl scale-90 transition-transform duration-300">
             <div class="flex justify-between items-center mb-4">
-                <h2 class="text-xl font-semibold">New Note</h2>
+                <h2 id="noteModalTitle" class="text-xl font-semibold">New Note</h2>
                 <button id="closeModal" class="text-gray-400 hover:text-black text-2xl cursor-pointer">&times;</button>
             </div>
             <input id="noteTitleInput" type="text" placeholder="Note title." maxlength="100"
@@ -178,6 +203,18 @@
                 <option value="Work">Work</option>
             </select>
             <button id="saveNoteBtn" class="w-full bg-blue-600 text-white py-2 rounded-lg duration-300 hover:bg-blue-700 cursor-pointer">Save Note</button>
+        </div>
+    </div>
+
+    <!-- DELETE CONFIRMATION MODAL -->
+    <div id="deleteModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 opacity-0 pointer-events-none transition-opacity duration-300">
+        <div id="deleteModalBox" class="bg-white rounded-xl p-6 w-[90%] max-w-sm shadow-2xl text-center scale-90 transition-transform duration-300">
+            <h2 class="text-xl font-semibold mb-2">Delete Note</h2>
+            <p id="deleteModalText" class="text-gray-500 mb-6">Are you sure you want to delete this note? This action cannot be undone.</p>
+            <div class="flex gap-3">
+                <button id="cancelDeleteBtn" class="flex-1 px-4 py-2 rounded-lg bg-gray-200 hover:bg-gray-300 duration-300 cursor-pointer font-medium">Cancel</button>
+                <button id="confirmDeleteBtn" class="flex-1 px-4 py-2 rounded-lg bg-red-500 text-white hover:bg-red-600 duration-300 cursor-pointer font-medium">Delete</button>
+            </div>
         </div>
     </div>
 

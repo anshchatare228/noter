@@ -17,15 +17,15 @@
 
     <video id="bgVid" autoplay muted loop class="fixed mt-[-2rem] -z-10 h-full w-full object-cover invert brightness-75" src="media/307818_medium.mp4" type="video/mp4"></video>
 
-    <div class="flex flex-col items-center mt-[-3rem] lg:mt-[2rem]">
-        <img src="media/Noter_logo.png" class="h-[20rem]" >
-        <div class="bg-zinc-600/80 backdrop-blur-[0.4rem] h-[25rem] w-[90%] lg:w-[26rem] rounded-xl mt-[-8rem] lg:mt-[-6rem] shadow-black/50 shadow-xl scale-90 md:scale-90 lg:scale-100">
-            <div class="flex flex-col items-center font-['sansation'] mt-3 px-8">
+    <div class="flex flex-col items-center mt-[-3rem] lg:mt-[2rem] px-4">
+        <img src="media/Noter_logo.png" class="h-[14rem] md:h-[20rem]" >
+        <div class="bg-zinc-600/80 backdrop-blur-[0.4rem] h-auto py-6 w-full max-w-[26rem] rounded-xl mt-[-5rem] md:mt-[-6rem] shadow-black/50 shadow-xl">
+            <div class="flex flex-col items-center font-['sansation'] mt-3 px-6 md:px-8">
                 <div class="text-3xl flex justify-center w-full mb-4">
                     <h1 class=" font-bold text-white">Login to</h1>
                     <h1 class=" font-bold pl-2 text-blue-600">Noter</h1>
                 </div>
-                <form class="flex flex-col gap-5 w-full max-w-md mx-auto scale-110 lg:scale-105" autocomplete="on">
+                <form class="flex flex-col gap-4 md:gap-5 w-full max-w-md mx-auto" autocomplete="on">
 
                     <!-- Email box -->
                     <div class="flex flex-col gap-1">
@@ -42,21 +42,36 @@
 
                         <input id="password" type="password" name="password" required minlength="8" maxlength="32" placeholder="Enter your password" class="font-['arimo'] rounded-lg px-4 py-2 border border-blue-900/50 focus:outline-none focus:ring-2 transition-all duration-300 focus:ring-blue-400 bg-white text-zinc-900 placeholder-zinc-400 pr-12" />
 
-                        <button type="button" id="togglePassword" class="absolute right-3 top-9 text-zinc-500 hover:text-blue-600 focus:outline-none"></button>
+                        <button type="button" id="togglePassword" class="absolute right-3 top-9 text-zinc-500 hover:text-blue-600 focus:outline-none">👁</button>
 
                         <span class="text-xs text-white ml-2">8-32 characters</span>
                     </div>
 
                     <!-- Login Button -->
                     <button id="loginBtn" type="submit" class="w-full bg-gradient-to-r from-blue-600 to-blue-400 hover:from-blue-700 hover:to-blue-500 hover:-translate-y-1 text-white font-bold py-2 rounded-lg shadow-xl shadow-black/30 transition-all duration-300 text-lg">Login</button>
-                    <div class="flex flex-row justify-between items-center mt-1 w-full">
-                        <button type="button" class=" text-white hover:underline font-semibold duration-300 hover:text-yellow-300">Forgot password?</button>
-                        <a type="button" href="signup.html" class=" text-white duration-300 hover:text-yellow-300 hover:underline font-semibold">Sign up</a>
+                    <div class="flex flex-col sm:flex-row justify-between items-center mt-1 w-full gap-2">
+                        <button type="button" id="forgotPasswordBtn" class="text-white hover:underline font-semibold duration-300 hover:text-yellow-300 text-sm md:text-base">Forgot password?</button>
+                        <a type="button" href="signup.html" class="text-white duration-300 hover:text-yellow-300 hover:underline font-semibold text-sm md:text-base">Sign up</a>
                     </div>
                 </form>
             </div>
         </div>    
         <p id="errorMsg" class="text-[1.2rem] text-white z-50 mt-5 px-4 py-2 bg-red-900/90 border border-white rounded-xl font-['arimo'] transition-all duration-300 ease-in-out opacity-0 translate-y-2">Something went wrong</p>
+    </div>
+
+    <!-- FORGOT PASSWORD MODAL -->
+    <div id="forgotModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 opacity-0 pointer-events-none transition-opacity duration-300">
+        <div id="forgotModalBox" class="bg-zinc-600/90 backdrop-blur-md rounded-xl p-6 w-[90%] max-w-sm shadow-2xl text-center scale-90 transition-transform duration-300">
+            <h2 class="text-xl font-semibold text-white mb-2 font-['sansation']">Reset Password</h2>
+            <p class="text-white/70 text-sm mb-4">Enter your email and we'll send you a reset link.</p>
+            <input id="resetEmail" type="email" placeholder="Enter your email"
+                class="w-full font-['arimo'] rounded-lg px-4 py-2 mb-4 border border-blue-900/50 focus:outline-none focus:ring-2 focus:ring-blue-400 bg-white text-zinc-900 placeholder-zinc-400" />
+            <div class="flex gap-3">
+                <button id="cancelResetBtn" class="flex-1 px-4 py-2 rounded-lg bg-gray-200 hover:bg-gray-300 duration-300 cursor-pointer font-medium">Cancel</button>
+                <button id="sendResetBtn" class="flex-1 px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 duration-300 cursor-pointer font-medium">Send Link</button>
+            </div>
+            <p id="resetMsg" class="text-sm mt-3 opacity-0 transition-opacity duration-300"></p>
+        </div>
     </div>    
 
     <script type="module" src="js/login.js"></script>
