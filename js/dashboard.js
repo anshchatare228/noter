@@ -208,7 +208,14 @@ function renderNote(note) {
     }
 
     const card = document.createElement("div");
-    card.className = "bg-white rounded-xl shadow-md p-5 hover:shadow-lg transition cursor-pointer";
+    const cardColors = {
+        Personal: "bg-gradient-to-br from-purple-400 to-purple-700",
+        Important: "bg-gradient-to-br from-yellow-300 to-yellow-600",
+        Work: "bg-gradient-to-br from-blue-400 to-blue-700",
+    };
+
+    const bgColor = cardColors[note.tag] || cardColors["Personal"];
+    card.className = `${bgColor} rounded-xl shadow-md p-5 hover:shadow-lg transition cursor-pointer`;
 
     let actionButtons;
     if (isTrashed) {
@@ -225,9 +232,9 @@ function renderNote(note) {
         + actionButtons
         + '</div>'
         + '<h3 class="font-semibold text-lg">' + escapeHtml(note.title) + '</h3>'
-        + '<p class="text-gray-600 text-sm mt-1">' + escapeHtml(note.body).substring(0, 100) + (note.body.length > 100 ? "..." : "") + '</p>'
+        + '<p class="text-black text-[0.85rem] mt-1">' + escapeHtml(note.body).substring(0, 100) + (note.body.length > 100 ? "..." : "") + '</p>'
         + '<div class="flex justify-between items-center mt-4 text-sm">'
-        + '<span class="text-gray-400">' + timeText + '</span>'
+        + '<span class="text-black/90 px-1 border border-black *:">' + timeText + '</span>'
         + '</div>';
 
     if (isTrashed) {
