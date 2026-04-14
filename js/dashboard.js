@@ -234,7 +234,7 @@ function renderNote(note) {
         + '<h3 class="font-semibold text-lg">' + escapeHtml(note.title) + '</h3>'
         + '<p class="text-black text-[0.85rem] mt-1">' + escapeHtml(note.body).substring(0, 100) + (note.body.length > 100 ? "..." : "") + '</p>'
         + '<div class="flex justify-between items-center mt-4 text-sm">'
-        + '<span class="text-black/90 px-1 border border-black *:">' + timeText + '</span>'
+        + '<span class="text-black/90 px-1 border border-black rounded-lg pb-[0.1rem]">' + timeText + '</span>'
         + '</div>';
 
     if (isTrashed) {
