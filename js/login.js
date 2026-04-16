@@ -48,7 +48,7 @@ sendResetBtn.addEventListener('click', async () => {
     try {
         await sendPasswordResetEmail(auth, email);
         resetMsg.textContent = 'Reset link sent! Check your inbox.';
-        resetMsg.className = 'text-sm mt-3 text-green-400 transition-opacity duration-300';
+        resetMsg.className = 'text-sm mt-3 text-green-400 transition-opacity duration-500';
     } catch (error) {
         resetMsg.textContent = 'Could not send reset email. Check the address.';
         resetMsg.className = 'text-sm mt-3 text-red-400 transition-opacity duration-300';
