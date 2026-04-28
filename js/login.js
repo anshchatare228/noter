@@ -41,6 +41,7 @@ cancelResetBtn.addEventListener('click', () => {
     resetMsg.classList.add('opacity-0');
 });
 
+ 
 sendResetBtn.addEventListener('click', async () => {
     const email = resetEmail.value.trim();
     if (!email) return;
